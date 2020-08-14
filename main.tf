@@ -17,6 +17,7 @@ resource "aws_launch_template" "launchfleet1" {
   name_prefix   = "ecofleet"
   image_id      = "ami-007e9fbe81cfbf4fa"
   instance_type = "t3.micro"
+  vpc_security_group_ids = var.security-groups-template
 }
 
 resource "aws_ec2_fleet" "fleet-eco-zonec" {

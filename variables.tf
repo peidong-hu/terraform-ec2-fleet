@@ -21,3 +21,8 @@ variable "us-east-2c-subnet-ids" {
   default = ["subnet-9ef12ed2"]
 }
 
+variable "security-groups-template" {
+  type = list(string)
+  default = ["sg-9301b6fd"]
+}
+
