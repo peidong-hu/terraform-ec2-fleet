@@ -30,3 +30,7 @@ variable "ins-type" {
   default = "t3.micro"
 }
 
+variable "ami-id" {
+  default = "ami-007e9fbe81cfbf4fa"
+}
+

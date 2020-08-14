@@ -15,7 +15,7 @@ provider "aws" {
 
 resource "aws_launch_template" "launchfleet1" {
   name_prefix   = "ecofleet"
-  image_id      = "ami-007e9fbe81cfbf4fa"
+  image_id      = var.ami-id
   instance_type = var.ins-type
   vpc_security_group_ids = var.security-groups-template
 }
