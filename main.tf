@@ -28,12 +28,14 @@ resource "aws_ec2_fleet" "fleeteco" {
     override {
       availability_zone = "us-east-2b"
       instance_type = "t3.micro"
+      subnet_id = "subnet-d3c3b7a9"
 #      weighted_capacity = 3 
     }
 
     override {
       availability_zone = "us-east-2c"
       instance_type = "t3.micro"
+      subnet_id = "subnet-9ef12ed2"
 #      weighted_capacity = 2
     }
   }
