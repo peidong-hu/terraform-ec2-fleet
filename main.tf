@@ -43,9 +43,9 @@ resource "aws_ec2_fleet" "fleet-eco-zonec" {
   }
   target_capacity_specification {
     default_target_capacity_type = "spot"
-    total_target_capacity        = 5
-    on_demand_target_capacity    = 1
-    spot_target_capacity         = 4
+    total_target_capacity        = var.czone-total
+    on_demand_target_capacity    = var.czone-ondemand-count
+    spot_target_capacity         = var.czone-spot-count
   }
 }
 
@@ -72,8 +72,8 @@ resource "aws_ec2_fleet" "fleet-eco-zoneb" {
   }
   target_capacity_specification {
     default_target_capacity_type = "spot"
-    total_target_capacity        = 5 
-    on_demand_target_capacity    = 1
-    spot_target_capacity         = 4
+    total_target_capacity        = var.bzone-total
+    on_demand_target_capacity    = var.bzone-ondemand-count
+    spot_target_capacity         = var.bzone-spot-count
   }
 }

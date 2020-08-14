@@ -34,3 +34,27 @@ variable "ami-id" {
   default = "ami-007e9fbe81cfbf4fa"
 }
 
+variable "bzone-total" {
+  default = 5 #BZONE-TOTAL
+}
+
+variable "bzone-spot-count" {
+  default = 4
+}
+
+variable "bzone-ondemand-count" {
+  default = 1
+}
+
+variable "czone-total" {
+  default = 5
+}
+
+variable "czone-spot-count" {
+  default = 4
+}
+
+variable "czone-ondemand-count" {
+  default = 1
+}
+
