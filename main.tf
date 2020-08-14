@@ -19,7 +19,34 @@ resource "aws_launch_template" "launchfleet1" {
   instance_type = "t3.micro"
 }
 
-resource "aws_ec2_fleet" "fleeteco" {
+resource "aws_ec2_fleet" "fleet-eco-zonec" {
+  count = length(var.us-east-2c-subnet-ids)
+  launch_template_config {
+    launch_template_specification {
+      launch_template_id = aws_launch_template.launchfleet1.id
+      version            = "$Latest"
+    }
+
+    override {
+      availability_zone = "us-east-2c"
+      instance_type = "t3.micro"
+      subnet_id = var.us-east-2c-subnet-ids[count.index]
+    }
+  }
+  spot_options {
+    allocation_strategy = "diversified"
+  }
+  target_capacity_specification {
+    default_target_capacity_type = "spot"
+    total_target_capacity        = 5
+    on_demand_target_capacity    = 1
+    spot_target_capacity         = 4
+  }
+}
+
+
+resource "aws_ec2_fleet" "fleet-eco-zoneb" {
+  count = length(var.us-east-2b-subnet-ids)
   launch_template_config {
     launch_template_specification {
       launch_template_id = aws_launch_template.launchfleet1.id
@@ -28,24 +55,17 @@ resource "aws_ec2_fleet" "fleeteco" {
     override {
       availability_zone = "us-east-2b"
       instance_type = "t3.micro"
-      subnet_id = "subnet-d3c3b7a9"
-#      weighted_capacity = 3 
+      subnet_id = var.us-east-2b-subnet-ids[count.index]
     }
 
-    override {
-      availability_zone = "us-east-2c"
-      instance_type = "t3.micro"
-      subnet_id = "subnet-9ef12ed2"
-#      weighted_capacity = 2
-    }
   }
   spot_options {
     allocation_strategy = "diversified"
   }
   target_capacity_specification {
     default_target_capacity_type = "spot"
-    total_target_capacity        = 6 
+    total_target_capacity        = 5 
     on_demand_target_capacity    = 1
-    spot_target_capacity         = 5
+    spot_target_capacity         = 4
   }
 }

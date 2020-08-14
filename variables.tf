@@ -10,3 +10,14 @@ variable "aws_amis" {
     us-east-2 = "ami-007e9fbe81cfbf4fa"
   }
 }
+
+variable "us-east-2b-subnet-ids" {
+  type = list(string)
+  default = ["subnet-d3c3b7a9"]
+}
+
+variable "us-east-2c-subnet-ids" {
+  type = list(string)
+  default = ["subnet-9ef12ed2"]
+}
+
