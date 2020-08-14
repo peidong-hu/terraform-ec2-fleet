@@ -26,3 +26,7 @@ variable "security-groups-template" {
   default = ["sg-9301b6fd"]
 }
 
+variable "ins-type" {
+  default = "t3.micro"
+}
+
