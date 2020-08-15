@@ -18,6 +18,13 @@ resource "aws_launch_template" "launchfleet1" {
   image_id      = var.ami-id
   instance_type = var.ins-type
   vpc_security_group_ids = var.security-groups-template
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      multiVolAttach = var.multi-attach-uuid
+    }
+  }
 }
 
 resource "aws_ec2_fleet" "fleet-eco-zonec" {

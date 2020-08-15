@@ -58,3 +58,6 @@ variable "czone-ondemand-count" {
   default = 1 #CZONE-ONDEMAND-COUNT
 }
 
+variable "multi-attach-uuid" {
+  default = "uuid" #MULTI-ATTACH-UUID
+}
